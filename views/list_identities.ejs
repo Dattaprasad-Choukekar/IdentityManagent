@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<% include partials/head.html %>
+<title>List Identities</title>
+</head>
+
+<body>
+
+<% include partials/top.html %>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+<div class="row placeholders"></div>
+
+<h2 class="sub-header">List of Identities</h2> 
+
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email Id</th>
+				<th>Birth Date</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%
+			for (var key in identities) {
+			%>
+				<tr id="<%=identities[key]['_id']%>" />
+					<td><%=identities[key]['_id']%></td>
+					<td><%=identities[key]['firstName']%></td>
+					<td><%=identities[key]['lastName']%></td>
+					<td><%=identities[key]['email']%></td>
+					<td><%=identities[key]['birthDate']? identities[key]['birthDate']: ""%></td>
+							
+					<td><a
+						href="update_identity?id=<%=identities[key]['_id']%>"><span
+							class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+					<td><a
+						href="delete_identity?id=<%=identities[key]['_id']%>"><span
+							class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+				</tr>
+				
+					<%
+					}
+				%>
+			
+		</tbody>
+	</table>
+</div>
+
+
+
+
+</div>
+
+<% include partials/bottom.html %>
+</body>
+</html>
